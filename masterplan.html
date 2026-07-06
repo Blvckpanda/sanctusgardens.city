@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Masterplan — Sanctus Gardens City</title>
+<meta name="description" content="Explore the masterplan of Sanctus Gardens City. Interactive map of five districts across 2,500 hectares of waterfront smart city.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Mobile nav drawer -->
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav__group">
+    <h5>Explore</h5>
+    <a href="index.html" class="mobile-nav__link">Home</a>
+    <a href="masterplan.html" class="mobile-nav__link">Masterplan</a>
+    <a href="infrastructure.html" class="mobile-nav__link">Infrastructure</a>
+  </div>
+  <div class="mobile-nav__group">
+    <h5>Districts</h5>
+    <a href="district.html?id=residential" class="mobile-nav__link">Residential</a>
+    <a href="district.html?id=commercial" class="mobile-nav__link">Commercial</a>
+    <a href="district.html?id=leisure" class="mobile-nav__link">Leisure</a>
+    <a href="district.html?id=innovation" class="mobile-nav__link">Innovation</a>
+    <a href="district.html?id=landmark" class="mobile-nav__link">Landmark</a>
+  </div>
+  <div class="mobile-nav__group">
+    <h5>Opportunities</h5>
+    <a href="opportunity.html" class="mobile-nav__link">Investment Opportunities</a>
+    <a href="about-city.html" class="mobile-nav__link">Our Vision</a>
+    <a href="about-heri.html" class="mobile-nav__link">Heri Homes</a>
+  </div>
+  <a href="contact.html" class="btn btn--gold-on-dark btn--lg mobile-nav__cta">Speak With Our Investment Team</a>
+</nav>
+
+<header class="site-header" role="banner">
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <span class="brand__mark">
+        <svg viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="6" fill="currentColor" opacity="0.9"/><path d="M8 18.5c0-4.5 3-8 7-10.5s7.5-1 8 8c.3 5.5-2.2 8.5-6.5 8.5-3 0-5-2-5.5-3.5M15 20c-2 0-4-1-4-3.5s2.5-5 5-6.5c1.5-.8 3.5 0 4 2.5.3 2-1 6-2.5 6S15.5 20 15 20z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </span>
+      <span class="brand__name">Sanctus Gardens City<small>by Heri Homes &amp; Properties</small></span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="masterplan.html" class="nav__link" aria-current="page">Masterplan</a>
+      <a href="district.html?id=residential" class="nav__link">Districts</a>
+      <a href="opportunity.html" class="nav__link">Invest</a>
+      <a href="infrastructure.html" class="nav__link">Infrastructure</a>
+      <a href="about-city.html" class="nav__link">About</a>
+      <a href="contact.html" class="nav__link nav__cta btn btn--gold btn--sm">Speak With Us</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><span></span></button>
+  </div>
+</header>
+
+<!-- Page hero -->
+<section class="pagehero" id="main" style="min-height:40vh">
+  <div class="pagehero__bg">
+    <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1440" height="500" fill="#07261B"/>
+      <path d="M0 300 Q360 240 720 300 Q1080 360 1440 280 V500 H0Z" fill="#0A3324" opacity="0.6"/>
+      <path d="M0 350 Q360 300 720 360 Q1080 420 1440 340 V500 H0Z" fill="#0D4732" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="pagehero__inner container">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span><span>Masterplan</span></div>
+    <h1 class="reveal" style="transition-delay:0.15s">Interactive Masterplan</h1>
+    <p class="pagehero__sub reveal" style="transition-delay:0.3s">Navigate the 2,500-hectare vision. Click any district to discover its character, infrastructure, and investment opportunities. Zoom and pan for detail.</p>
+  </div>
+</section>
+
+<!-- Full masterplan interactive -->
+<section class="section" aria-label="Masterplan interactive map">
+  <div class="container">
+    <div class="masterplan reveal" style="min-height:80vh;border-radius:var(--r-xl);margin-bottom:2rem">
+      <div class="masterplan__stage" style="position:absolute;inset:0;z-index:2">
+        <div class="svg-stage" style="position:absolute;inset:0;transform-origin:center center">
+          <svg viewBox="0 0 1200 800" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg">
+            <!-- Water body -->
+            <rect x="0" y="520" width="1200" height="280" fill="#06271b" opacity="0.85"/>
+            <path d="M0 540 Q300 510 600 530 Q900 550 1200 520 V800 H0Z" fill="#0A3324"/>
+            <!-- Grid patterns -->
+            <path d="M1200 540 L0 540" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+            <path d="M1200 580 L0 580" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+            <path d="M1200 620 L0 620" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+            <!-- Residential -->
+            <g class="district" data-district="residential" data-name="Residential District" data-tag="Waterfront Estates">
+              <path d="M80 200 L340 180 L380 280 L360 380 L180 420 L60 310Z" fill="rgba(15,61,46,0.65)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <text x="190" y="310" fill="#fff" font-size="12" font-family="system-ui" font-weight="500" text-anchor="middle" opacity="0.8">Residential</text>
+              <text x="190" y="325" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Waterfront Estates</text>
+              <!-- Buildings -->
+              <rect x="120" y="260" width="12" height="30" fill="#0B3526" rx="2"/>
+              <rect x="145" y="250" width="10" height="40" fill="#15513C" rx="2"/>
+              <rect x="165" y="255" width="14" height="35" fill="#0B3526" rx="2"/>
+            </g>
+            <!-- Commercial -->
+            <g class="district" data-district="commercial" data-name="Commercial District" data-tag="Business &amp; Retail">
+              <path d="M420 180 L700 160 L740 280 L700 380 L400 360Z" fill="rgba(26,69,52,0.65)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <text x="560" y="280" fill="#fff" font-size="12" font-family="system-ui" font-weight="500" text-anchor="middle" opacity="0.8">Commercial</text>
+              <text x="560" y="295" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Business District</text>
+              <rect x="480" y="230" width="24" height="50" fill="#0B3526" rx="3"/>
+              <rect x="520" y="220" width="20" height="60" fill="#1A4534" rx="3"/>
+              <rect x="555" y="235" width="22" height="45" fill="#0B3526" rx="3"/>
+            </g>
+            <!-- Leisure -->
+            <g class="district" data-district="leisure" data-name="Leisure District" data-tag="Marina &amp; Culture">
+              <path d="M780 200 L1060 220 L1100 350 L1050 480 L760 400Z" fill="rgba(15,61,46,0.65)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <text x="920" y="330" fill="#fff" font-size="12" font-family="system-ui" font-weight="500" text-anchor="middle" opacity="0.8">Leisure</text>
+              <text x="920" y="345" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Marina &amp; Culture</text>
+              <circle cx="860" cy="390" r="15" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            </g>
+            <!-- Innovation -->
+            <g class="district" data-district="innovation" data-name="Innovation District" data-tag="Research &amp; Tech">
+              <path d="M740 380 L1100 360 L1140 480 L1060 580 L700 500Z" fill="rgba(31,106,79,0.6)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <text x="910" y="470" fill="#fff" font-size="12" font-family="system-ui" font-weight="500" text-anchor="middle" opacity="0.8">Innovation</text>
+              <text x="910" y="485" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Delta Lab</text>
+            </g>
+            <!-- Landmark -->
+            <g class="district" data-district="landmark" data-name="Landmark District" data-tag="Sanctus Tower">
+              <path d="M360 220 L440 210 L460 360 L440 460 L340 440Z" fill="rgba(184,146,58,0.3)" stroke="rgba(220,192,122,0.5)" stroke-width="1.5"/>
+              <rect x="385" y="170" width="10" height="50" fill="#B8923A" opacity="0.7"/>
+              <polygon points="390,170 395,155 400,170" fill="#DCC07A" opacity="0.7"/>
+              <text x="400" y="340" fill="#DCC07A" font-size="11" font-family="system-ui" font-weight="600" text-anchor="middle">Sanctus Tower</text>
+            </g>
+            <!-- Infrastructure layer -->
+            <line x1="380" y1="200" x2="380" y2="380" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="700" y1="240" x2="700" y2="400" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="100" y1="300" x2="1060" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <line x1="380" y1="380" x2="700" y2="520" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <!-- Monorail -->
+            <path d="M120 280 Q300 250 560 260 Q800 270 1060 250" fill="none" stroke="rgba(220,192,122,0.25)" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="800" y="245" fill="rgba(220,192,122,0.4)" font-size="8" font-family="system-ui">Monorail Line</text>
+            <!-- Park -->
+            <ellipse cx="560" cy="420" rx="50" ry="30" fill="rgba(31,106,79,0.3)" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+            <text x="560" y="425" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Central Park</text>
+            <!-- Marina -->
+            <rect x="890" y="520" width="80" height="15" fill="rgba(15,61,46,0.6)" rx="4" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+            <text x="930" y="530" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Marina</text>
+            <!-- Jetties -->
+            <rect x="180" y="520" width="16" height="20" fill="rgba(184,146,58,0.4)" rx="2"/>
+            <text x="188" y="535" fill="rgba(255,255,255,0.5)" font-size="7" font-family="system-ui" text-anchor="middle">Jetty</text>
+            <rect x="720" y="525" width="16" height="20" fill="rgba(184,146,58,0.4)" rx="2"/>
+            <text x="728" y="540" fill="rgba(255,255,255,0.5)" font-size="7" font-family="system-ui" text-anchor="middle">Ferry</text>
+            <!-- Compass -->
+            <circle cx="30" cy="30" r="12" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+            <text x="30" y="14" fill="rgba(255,255,255,0.5)" font-size="7" text-anchor="middle">N</text>
+            <line x1="30" y1="22" x2="30" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Tooltip -->
+      <div class="masterplan__tooltip"><span></span><h6></h6></div>
+
+      <!-- Zoom controls -->
+      <div class="masterplan__hud masterplan__hud--br">
+        <button class="mp-btn mp-zoom-in" aria-label="Zoom in">+</button>
+        <button class="mp-btn mp-zoom-out" aria-label="Zoom out">−</button>
+        <button class="mp-btn mp-reset" aria-label="Reset view">⊙</button>
+      </div>
+
+      <!-- Top-left hint -->
+      <div class="masterplan__hud masterplan__hud--tl">
+        <span class="mp-hint">Drag to pan · Scroll to zoom · Click a district</span>
+      </div>
+
+      <!-- Legend (top-right) -->
+      <div class="masterplan__hud masterplan__hud--tr">
+        <div class="mp-legend">
+          <div class="row"><span class="swatch" style="background:rgba(15,61,46,0.65);border:1px solid rgba(255,255,255,0.2)"></span>Residential</div>
+          <div class="row"><span class="swatch" style="background:rgba(26,69,52,0.65);border:1px solid rgba(255,255,255,0.2)"></span>Commercial</div>
+          <div class="row"><span class="swatch" style="background:rgba(15,61,46,0.65);border:1px solid rgba(255,255,255,0.2)"></span>Leisure</div>
+          <div class="row"><span class="swatch" style="background:rgba(31,106,79,0.6);border:1px solid rgba(255,255,255,0.2)"></span>Innovation</div>
+          <div class="row"><span class="swatch" style="background:rgba(184,146,58,0.3);border:1px solid rgba(220,192,122,0.4)"></span>Landmark</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- District cards below map -->
+<section class="section bg-alt" aria-label="District summary cards">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">City Zones</span>
+      <h2>Five districts, distinct character</h2>
+    </div>
+    <div class="grid grid--2 reveal-stagger">
+      <div class="pillar">
+        <span class="kicker-num">01</span>
+        <h3 class="mt-1">Residential District</h3>
+        <p>Low-density waterfront estates, garden apartments, and townhomes with mangrove buffers, fiber utilities, and district cooling.</p>
+        <div class="mt-2"><a href="district.html?id=residential" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
+      </div>
+      <div class="pillar">
+        <span class="kicker-num">02</span>
+        <h3 class="mt-1">Commercial &amp; Business District</h3>
+        <p>Grade-A offices, retail, boutique hotels, and a civic plaza — the commercial heart of Port Harcourt's new business address.</p>
+        <div class="mt-2"><a href="district.html?id=commercial" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
+      </div>
+      <div class="pillar">
+        <span class="kicker-num">03</span>
+        <h3 class="mt-1">Leisure &amp; Recreation District</h3>
+        <p>Car-light waterfront with marinas, parks, restaurants, cultural venues, and the city's public living room.</p>
+        <div class="mt-2"><a href="district.html?id=leisure" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
+      </div>
+      <div class="pillar">
+        <span class="kicker-num">04</span>
+        <h3 class="mt-1">Innovation &amp; Research District</h3>
+        <p>Applied research labs, climate-tech incubators, and prototyping facilities — the Delta Lab.</p>
+        <div class="mt-2"><a href="district.html?id=innovation" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
+      </div>
+      <div class="pillar" style="grid-column:1/-1;max-width:600px">
+        <span class="kicker-num">05</span>
+        <h3 class="mt-1">Landmark District</h3>
+        <p>Sanctus Tower (325m+) and The Conservatory — the symbolic core of the city, set within restored mangroves.</p>
+        <div class="mt-2"><a href="district.html?id=landmark" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section bg-green" aria-label="Consultation call to action">
+  <div class="container center">
+    <div class="reveal">
+      <span class="eyebrow eyebrow--plain">Inside the Masterplan</span>
+      <h2 class="mt-1" style="color:#fff">Ready to secure your place in the city?</h2>
+      <div class="hero__cta-row mt-3" style="justify-content:center">
+        <a href="opportunity.html" class="btn btn--gold-on-dark btn--lg">View Investment Opportunities <span class="btn-arrow">→</span></a>
+        <a href="contact.html" class="btn btn--on-dark btn--lg">Speak With Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cta-band reveal">
+      <h3>Invest in Sanctus Gardens City</h3>
+      <a href="contact.html" class="btn btn--gold btn--lg">Speak With Our Investment Team <span class="btn-arrow">→</span></a>
+    </div>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand__name" style="color:#fff">Sanctus Gardens City<small style="color:rgba(255,255,255,0.6)">by Heri Homes &amp; Properties</small></a>
+        <p>A landmark smart city rising on the waterfront of Ogbogoro, Port Harcourt.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="masterplan.html">Masterplan</a></li>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
+          <li><a href="about-city.html">Our Vision</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Invest</h5>
+        <ul>
+          <li><a href="opportunity.html">Opportunities</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="contact.html">Speak With Us</a></li>
+          <li><a href="about-heri.html">About Heri Homes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Heri Homes and Properties Limited.</span>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+    </div>
+    <p class="disclaimer">This website is a marketing and investment discovery platform. All information is indicative and subject to change. Not an offer of sale or investment.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
