@@ -4,6 +4,13 @@
    panorama, modals, drawer, accordion, forms
    ===================================================================== */
 
+/* ---------- Analytics helper ---------- */
+function sgcTrack(event, props) {
+  try {
+    if (window.posthog) posthog.capture(event, props || {});
+  } catch(e) { /* analytics never blocks UX */ }
+}
+
 /* ---------- Progressive enhancement: mark JS active ---------- */
 document.documentElement.classList.add('js-enabled');
 
@@ -11,7 +18,7 @@ document.documentElement.classList.add('js-enabled');
 function initHeroParticles(canvas) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let w, h, particles = [];
+  let w, h, particles = [], rafId = null;
   const MAX = 80;
 
   function resize() {
@@ -62,7 +69,6 @@ function initHeroParticles(canvas) {
   function draw() {
     ctx.clearRect(0, 0, w, h);
     particles.forEach(p => { p.update(); p.draw(); });
-    // draw connections between nearby particles
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -78,8 +84,13 @@ function initHeroParticles(canvas) {
         }
       }
     }
-    requestAnimationFrame(draw);
+    rafId = requestAnimationFrame(draw);
   }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { cancelAnimationFrame(rafId); }
+    else { draw(); }
+  });
 
   init();
   draw();
@@ -159,7 +170,10 @@ if (masterplan && stage && svgWrap) {
     d.addEventListener('click', e => {
       e.stopPropagation();
       const id = d.getAttribute('data-district');
-      if (id && window.SGC_DISTRICTS) openDrawer(id);
+      if (id && window.SGC_DISTRICTS) {
+        openDrawer(id);
+        sgcTrack('district_click', { district: id, label: d.getAttribute('data-name') });
+      }
     });
   });
 
@@ -260,6 +274,21 @@ window.SGC_DISTRICTS = {
   }
 };
 
+/* ---------- District interest poll ---------- */
+const poll = document.getElementById('district-poll');
+if (poll) {
+  poll.addEventListener('click', e => {
+    const opt = e.target.closest('.poll__opt');
+    if (!opt) return;
+    poll.querySelectorAll('.poll__opt').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    const district = opt.getAttribute('data-district') || 'unknown';
+    const result = document.getElementById('poll-result');
+    if (result) result.innerHTML = `Great choice! <a href="district.html?id=${district}" class="text-link" style="font-size:0.9rem">Explore the ${opt.textContent.trim()} district <span class="btn-arrow">→</span></a> or <a href="contact.html?interest=${district}" class="text-link" style="font-size:0.9rem">speak with our investment team</a>.`;
+    sgcTrack('poll_district', { district });
+  });
+}
+
 /* ---------- Drawer ---------- */
 const drawer = document.querySelector('.drawer');
 const drawerClose = document.querySelector('.drawer__close');
@@ -284,6 +313,7 @@ function openDrawer(id) {
   drawer.classList.add('is-open');
   scrim?.classList.add('is-open');
   body.classList.add('drawer-open');
+  sgcTrack('drawer_open', { district: id });
 }
 
 drawerClose?.addEventListener('click', closeDrawer);
@@ -327,6 +357,7 @@ function openModal(id) {
   if (!modal) return;
   modal.classList.add('is-open');
   body.classList.add('modal-open');
+  sgcTrack('modal_open', { modal_id: id });
 }
 function closeModal(modal) {
   if (typeof modal === 'string') modal = document.getElementById(modal);
@@ -335,41 +366,6 @@ function closeModal(modal) {
 }
 window.openModal = openModal;
 window.closeModal = closeModal;
-
-document.querySelectorAll('.modal').forEach(modal => {
-  modal.querySelector('.modal__scrim')?.addEventListener('click', () => closeModal(modal));
-  modal.querySelector('.modal__close')?.addEventListener('click', () => closeModal(modal));
-
-  const form = modal.querySelector('.unlock-form');
-  const locked = modal.querySelector('.modal__locked');
-  const unlocked = modal.querySelector('.modal__unlocked');
-  if (!form || !locked || !unlocked) return;
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    form.closest('.modal__body')?.classList.add('sending');
-    setTimeout(() => {
-      form.closest('.modal__body')?.classList.remove('sending');
-      locked.style.display = 'none';
-      unlocked.style.display = 'grid';
-    }, 900);
-  });
-});
-
-/* ---------- Consultation forms ---------- */
-document.querySelectorAll('.consult-form').forEach(form => {
-  const success = form.querySelector('.form-success');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    form.classList.add('sending');
-    setTimeout(() => {
-      form.classList.remove('sending');
-      form.reset();
-      if (success) { form.style.display = 'none'; success.style.display = 'block'; }
-      else { window.location.href = 'thank-you.html'; }
-    }, 900);
-  });
-});
 
 /* ---------- Accordion ---------- */
 document.querySelectorAll('.acc').forEach(acc => {
@@ -415,4 +411,19 @@ document.querySelectorAll('.acc').forEach(acc => {
     d.opps.map(o => '<div class="pillar"><h3>' + o.split('(')[0].trim() + '</h3><p class="soft mt-1">' + o + '</p></div>').join(''));
 })();
 
-console.log('SGC site loaded - ' + new Date().toLocaleDateString());
+/* ---------- Track CTAs (general + data-track) ---------- */
+// Individual tracked CTAs
+document.querySelectorAll('[data-track]').forEach(el => {
+  el.addEventListener('click', () => sgcTrack('cta_click', { label: el.getAttribute('data-track') }));
+});
+
+// General button/link catch-all (fires for every .btn click, deduped by checking data-track)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.btn, .text-link, .nav__link, .card__title a');
+  if (!btn) return;
+  if (btn.hasAttribute('data-track')) return; // already tracked individually
+  const label = btn.getAttribute('href') || btn.textContent?.trim()?.slice(0, 60);
+  sgcTrack('nav_click', { label, page: window.location.pathname });
+});
+
+
