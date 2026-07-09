@@ -70,9 +70,9 @@
 <section class="section container" aria-label="Opportunity listing">
   <div class="reveal-stagger">
     <!-- Opp 1 -->
-    <article class="card mt-2" style="flex-direction:row;gap:1.6rem;align-items:stretch" id="opp-1">
-      <div style="flex:0 0 280px;border-radius:var(--r);overflow:hidden;background:var(--green-800);min-height:200px">
-        <svg viewBox="0 0 280 220" width="280" height="220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><rect x="30" y="50" width="60" height="80" fill="#0B3526" rx="4"/><rect x="100" y="30" width="40" height="100" fill="#15513C" rx="4"/><rect x="150" y="60" width="50" height="80" fill="#0B3526" rx="4"/><rect x="210" y="40" width="35" height="100" fill="#1A4534" rx="4"/><path d="M0 140 Q140 120 280 140 V220 H0Z" fill="#07261B"/></svg>
+    <article class="card mt-2 opp-card" id="opp-1">
+      <div class="opp-card__media">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><rect x="30" y="50" width="60" height="80" fill="#0B3526" rx="4"/><rect x="100" y="30" width="40" height="100" fill="#15513C" rx="4"/><rect x="150" y="60" width="50" height="80" fill="#0B3526" rx="4"/><rect x="210" y="40" width="35" height="100" fill="#1A4534" rx="4"/><path d="M0 140 Q140 120 280 140 V220 H0Z" fill="#07261B"/></svg>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;padding:0.5rem 0">
         <span class="card__sub">Residential · Land</span>
@@ -92,9 +92,9 @@
     </article>
 
     <!-- Opp 2 -->
-    <article class="card mt-2" style="flex-direction:row;gap:1.6rem;align-items:stretch" id="opp-2">
-      <div style="flex:0 0 280px;border-radius:var(--r);overflow:hidden;background:var(--green-800);min-height:200px">
-        <svg viewBox="0 0 280 220" width="280" height="220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><rect x="30" y="40" width="120" height="130" fill="#0B3526" rx="6"/><rect x="50" y="65" width="80" height="30" fill="#1A4534" rx="3"/><rect x="170" y="55" width="100" height="120" fill="#0B3526" rx="6"/><rect x="185" y="80" width="70" height="25" fill="#1A4534" rx="3"/></svg>
+    <article class="card mt-2 opp-card" id="opp-2">
+      <div class="opp-card__media">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><rect x="30" y="40" width="120" height="130" fill="#0B3526" rx="6"/><rect x="50" y="65" width="80" height="30" fill="#1A4534" rx="3"/><rect x="170" y="55" width="100" height="120" fill="#0B3526" rx="6"/><rect x="185" y="80" width="70" height="25" fill="#1A4534" rx="3"/></svg>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;padding:0.5rem 0">
         <span class="card__sub">Commercial · Leasehold</span>
@@ -114,9 +114,9 @@
     </article>
 
     <!-- Opp 3 -->
-    <article class="card mt-2" style="flex-direction:row;gap:1.6rem;align-items:stretch" id="opp-3">
-      <div style="flex:0 0 280px;border-radius:var(--r);overflow:hidden;background:var(--green-800);min-height:200px">
-        <svg viewBox="0 0 280 220" width="280" height="220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><path d="M0 130 Q70 115 140 130 Q210 145 280 125 V220 H0Z" fill="#07261B"/><rect x="40" y="70" width="80" height="60" fill="#0B3526" rx="4"/><circle cx="120" cy="120" r="8" fill="none" stroke="#B8923A" stroke-width="1" opacity="0.5"/><rect x="170" y="50" width="70" height="80" fill="#14503B" rx="4"/></svg>
+    <article class="card mt-2 opp-card" id="opp-3">
+      <div class="opp-card__media">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><path d="M0 130 Q70 115 140 130 Q210 145 280 125 V220 H0Z" fill="#07261B"/><rect x="40" y="70" width="80" height="60" fill="#0B3526" rx="4"/><circle cx="120" cy="120" r="8" fill="none" stroke="#B8923A" stroke-width="1" opacity="0.5"/><rect x="170" y="50" width="70" height="80" fill="#14503B" rx="4"/></svg>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;padding:0.5rem 0">
         <span class="card__sub">Leisure · Operator</span>
@@ -136,9 +136,9 @@
     </article>
 
     <!-- Opp 4 -->
-    <article class="card mt-2" style="flex-direction:row;gap:1.6rem;align-items:stretch" id="opp-4">
-      <div style="flex:0 0 280px;border-radius:var(--r);overflow:hidden;background:var(--green-800);min-height:200px">
-        <svg viewBox="0 0 280 220" width="280" height="220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><rect x="30" y="50" width="50" height="100" fill="#0B3526" rx="4"/><rect x="90" y="30" width="35" height="120" fill="#1A4534" rx="4"/><rect x="135" y="60" width="40" height="90" fill="#0B3526" rx="4"/><rect x="185" y="40" width="50" height="110" fill="#15513C" rx="4"/></svg>
+    <article class="card mt-2 opp-card" id="opp-4">
+      <div class="opp-card__media">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#0F3D2E"/><rect x="30" y="50" width="50" height="100" fill="#0B3526" rx="4"/><rect x="90" y="30" width="35" height="120" fill="#1A4534" rx="4"/><rect x="135" y="60" width="40" height="90" fill="#0B3526" rx="4"/><rect x="185" y="40" width="50" height="110" fill="#15513C" rx="4"/></svg>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;padding:0.5rem 0">
         <span class="card__sub">Innovation · Leasehold</span>
@@ -158,9 +158,9 @@
     </article>
 
     <!-- Opp 5 -->
-    <article class="card mt-2" style="flex-direction:row;gap:1.6rem;align-items:stretch" id="opp-5">
-      <div style="flex:0 0 280px;border-radius:var(--r);overflow:hidden;background:var(--green-800);min-height:200px">
-        <svg viewBox="0 0 280 220" width="280" height="220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#07261B"/><rect x="120" y="40" width="14" height="140" fill="#1A4534" rx="2"/><rect x="116" y="100" width="22" height="80" fill="#0B3526" rx="2"/><polygon points="127,40 131,20 135,40" fill="#B8923A" opacity="0.7"/><path d="M0 180 Q140 160 280 180 V220 H0Z" fill="#0A3324"/></svg>
+    <article class="card mt-2 opp-card" id="opp-5">
+      <div class="opp-card__media">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="220" fill="#07261B"/><rect x="120" y="40" width="14" height="140" fill="#1A4534" rx="2"/><rect x="116" y="100" width="22" height="80" fill="#0B3526" rx="2"/><polygon points="127,40 131,20 135,40" fill="#B8923A" opacity="0.7"/><path d="M0 180 Q140 160 280 180 V220 H0Z" fill="#0A3324"/></svg>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;padding:0.5rem 0">
         <span class="card__sub">Landmark · Concession</span>
