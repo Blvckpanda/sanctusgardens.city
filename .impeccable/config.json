@@ -1,0 +1,49 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "numbered-section-markers",
+      "em-dash-overuse",
+      "single-font"
+    ],
+    "ignoreFiles": [
+      "district.html",
+      "index.html",
+      "assets/css/style.css",
+      "faq.html",
+      "contact.html",
+      "sustainability.html",
+      "partnerships.html",
+      "masterplan.html",
+      "about-city.html",
+      "about-heri.html",
+      "infrastructure.html",
+      "opportunity.html"
+    ],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "reason": "Confirmed design system font",
+        "createdAt": "2026-07-06T21:53:42.784Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "reason": "Confirmed design system font",
+        "createdAt": "2026-07-06T21:53:44.991Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(26,69,52,0.65)",
+        "reason": "Masterplan SVG fill confirmed intentional",
+        "createdAt": "2026-07-06T22:00:59.163Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#a82828",
+        "reason": "Error color for form validation confirmed intentional",
+        "createdAt": "2026-07-06T22:26:42.356Z"
+      }
+    ]
+  }
+}

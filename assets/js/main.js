@@ -289,6 +289,31 @@ if (poll) {
   });
 }
 
+/* ---------- Contact form: pre-select category from URL ---------- */
+(function prefillContactForm() {
+  const params = new URLSearchParams(window.location.search);
+  const interest = params.get('interest');
+  if (!interest || !window.location.pathname.endsWith('contact.html')) return;
+
+  const select = document.getElementById('contact-category');
+  if (select) {
+    select.value = interest;
+    // Also pre-fill the message with context
+    const msg = document.getElementById('contact-msg');
+    if (msg && !msg.value) {
+      const districtNames = {
+        residential: 'Residential District (Waterfront Estates)',
+        commercial: 'Commercial & Business District',
+        leisure: 'Leisure & Recreation District (Marina & Culture)',
+        innovation: 'Innovation & Research District (Delta Lab)',
+        landmark: 'Landmark District (Sanctus Tower)'
+      };
+      const name = districtNames[interest] || interest;
+      msg.value = `I'm interested in the ${name} and would like to receive tailored investment information.`;
+    }
+  }
+})();
+
 /* ---------- Drawer ---------- */
 const drawer = document.querySelector('.drawer');
 const drawerClose = document.querySelector('.drawer__close');
@@ -425,5 +450,46 @@ document.addEventListener('click', e => {
   const label = btn.getAttribute('href') || btn.textContent?.trim()?.slice(0, 60);
   sgcTrack('nav_click', { label, page: window.location.pathname });
 });
+
+/* ---------- Prefill contact form from URL params ---------- */
+function prefillContactForm() {
+  const params = new URLSearchParams(window.location.search);
+  const interest = params.get('interest');
+  const category = params.get('category');
+
+  if (!interest && !category) return;
+
+  const select = document.getElementById('contact-category');
+  if (!select) return;
+
+  // Map district IDs to category values
+  const districtMap = {
+    residential: 'residential',
+    commercial: 'commercial',
+    leisure: 'leisure',
+    innovation: 'innovation',
+    landmark: 'landmark'
+  };
+
+  const value = districtMap[interest] || category;
+  const option = select.querySelector(`option[value="${value}"]`);
+  if (option) {
+    select.value = value;
+    // Also prefill a message hint if it's from a district interest
+    if (interest && districtMap[interest]) {
+      const msg = document.getElementById('contact-msg');
+      if (msg && !msg.value) {
+        msg.value = `I'm interested in the ${interest.charAt(0).toUpperCase() + interest.slice(1)} District investment opportunities.`;
+      }
+    }
+  }
+}
+
+// Run on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', prefillContactForm);
+} else {
+  prefillContactForm();
+}
 
 

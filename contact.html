@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +54,8 @@
         <p class="soft">Select your inquiry category and provide your details. We'll respond with the relevant investment materials.</p>
         <form class="sgc-form form stack-lg" data-name="contact enquiry" style="margin-top:1.5rem">
           <div class="form-body">
+            <input type="hidden" name="lead_source" value="contact_page">
+            <input type="hidden" name="lead_type" value="enquiry">
             <div class="field">
               <label for="contact-name">Full name</label>
               <input type="text" id="contact-name" name="name" required placeholder="Your full name">
@@ -72,12 +74,17 @@
               <label for="contact-category">Inquiry category</label>
               <select id="contact-category" name="category">
                 <option value="">Select a category...</option>
-                <option>Investment enquiry</option>
-                <option>Land purchase</option>
-                <option>Institutional partnership</option>
-                <option>Strategic partnership</option>
-                <option>Media / Press</option>
-                <option>General enquiry</option>
+                <option value="residential">Residential District</option>
+                <option value="commercial">Commercial & Business District</option>
+                <option value="leisure">Leisure & Recreation District</option>
+                <option value="innovation">Innovation & Research District</option>
+                <option value="landmark">Landmark / Sanctus Tower</option>
+                <option value="investment">General investment enquiry</option>
+                <option value="land-purchase">Land purchase</option>
+                <option value="institutional">Institutional partnership</option>
+                <option value="strategic">Strategic partnership</option>
+                <option value="media">Media / Press</option>
+                <option value="general">General enquiry</option>
               </select>
             </div>
             <div class="field">
@@ -143,10 +150,6 @@
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-cta-band reveal">
-      <h3>Invest in Sanctus Gardens City</h3>
-      <a href="contact.html" class="btn btn--gold btn--lg">Speak With Our Investment Team <span class="btn-arrow">→</span></a>
-    </div>
     <div class="footer-top">
       <div class="footer-brand"><a href="index.html" class="brand brand__name" style="color:#fff">Sanctus Gardens City</a><p>A landmark smart city rising on the waterfront of Ogbogoro, Port Harcourt.</p></div>
       <div class="footer-col"><h5>Explore</h5><ul><li><a href="index.html">Home</a></li><li><a href="masterplan.html">Masterplan</a></li><li><a href="infrastructure.html">Infrastructure</a></li><li><a href="about-city.html">Our Vision</a></li></ul></div>
@@ -161,3 +164,4 @@
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
+
