@@ -2,3 +2,9 @@
 Thumbs.db
 *.log
 node_modules/
+
+# Screenshots and test artifacts
+*.png
+*.yml
+.playwright-cli/
+.impeccable/

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>District — Sanctus Gardens City</title>
-<meta name="description" content="Explore the districts of Sanctus Gardens City — residential, commercial, leisure, innovation, and landmark zones.">
+<meta name="description" content="Explore the districts of Sanctus Gardens City — residential, commercial, leisure, innovation, landmark, and civic & community zones.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@
     <a href="district.html?id=leisure" class="mobile-nav__link">Leisure</a>
     <a href="district.html?id=innovation" class="mobile-nav__link">Innovation</a>
     <a href="district.html?id=landmark" class="mobile-nav__link">Landmark</a>
+    <a href="district.html?id=civic" class="mobile-nav__link">Civic &amp; Community</a>
   </div>
   <div class="mobile-nav__group">
     <h5>Opportunities</h5>
@@ -214,7 +215,6 @@
           <li><a href="opportunity.html">Opportunities</a></li>
           <li><a href="sustainability.html">Sustainability</a></li>
           <li><a href="partnerships.html">Partnerships</a></li>
-          <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -243,11 +243,17 @@ document.addEventListener('DOMContentLoaded', function() {
     residential: {
       label: 'Residential',
       title: 'Residential District',
-      sub: 'Waterfront estates for modern living — freehold land, garden apartments, and townhomes on the Ogbogoro shoreline.',
+      sub: 'Lush Beam apartments, Floating Gardens duplexes, and Halcyon villas — waterfront living on the Ogbogoro shoreline.',
       eyebrow: 'Residential District',
-      heading: 'Waterfront Living Quarters',
-      lead: 'Low-density waterfront estates, mid-rise garden apartments, and townhomes organized around quiet courts and pocket parks. Every home is within a 5-minute walk of green space, water access, or neighbourhood retail.',
-      highlights: ['Freehold land plots from 600 m²', 'Underground fibre and power', 'EV-ready parking, district cooling', 'Mangrove buffer parks along the creek'],
+      heading: 'Lush Beam, Floating Gardens & Halcyon',
+      lead: 'Three residential typologies within Business Town One. Lush Beam: eight apartment buildings, studio and two-bedroom units, organized around quiet courts. Floating Gardens: ten terraced duplex units facing the creek. Halcyon: standalone waterfront villas. Every home sits within a five-minute walk of green space, water access, or neighbourhood retail.',
+      highlights: [
+        'Lush Beam — 8 apartment buildings, studio and 2-bedroom units',
+        'Floating Gardens — 10 terraced duplex units',
+        'Halcyon — standalone waterfront villas',
+        'Freehold land plots also available from 600 m²',
+        'Mangrove buffer parks along the creek'
+      ],
       infra: [
         {icon: 'utilities', title: 'Utilities', desc: 'Underground power and fiber infrastructure with district cooling readiness and backup generation.'},
         {icon: 'transport', title: 'Transport', desc: 'Monorail stop within 400m, BRT route, dedicated cycle lanes, and pedestrian-first streets.'}
@@ -257,11 +263,18 @@ document.addEventListener('DOMContentLoaded', function() {
     commercial: {
       label: 'Commercial',
       title: 'Commercial & Business District',
-      sub: 'Grade-A offices, retail, hotels, and a civic plaza — Port Harcourt\'s new business address.',
+      sub: 'Brews 132, US 25, Deutey-Eight 18, and Fat Things on Lees — Port Harcourt\'s new business address.',
       eyebrow: 'Commercial & Business District',
-      heading: 'The Business Heart',
-      lead: 'Regional headquarters, hybrid work hubs, boutique hotels, and lifestyle retail facing a central civic plaza. Designed for energy sector firms, professional practices, and regional HQs.',
-      highlights: ['Grade-A office floors from 500 m²', '1.8 kW/m² power density, chilled beam HVAC', 'Boutique hotel operator opportunities', 'Civic plaza naming rights available'],
+      heading: 'Brews 132, US 25 & Deutey-Eight 18',
+      lead: 'Business Town One\'s commercial core spans three mixed-use developments. Brews 132 pairs residences with a hotel. US 25 pairs office space with residences. Deutey-Eight 18 pairs office space with hospitality. Fat Things on Lees anchors the district as its supermarket — pre-leasing already secured. A 4-star hotel brings conference capacity; Shadow adds 300 or more vehicles of structured parking.',
+      highlights: [
+        'Brews 132 (a–e) — mixed-use residences and hotel',
+        'US 25 (a–e) — mixed-use office and residences',
+        'Deutey-Eight 18 — office and hotel, 60% pre-leased',
+        'Fat Things on Lees — anchor supermarket, secured',
+        '4-star hotel with conference facilities',
+        'Shadow — 300+ vehicle structured parking'
+      ],
       infra: [
         {icon: 'utilities', title: 'Power & Connectivity', desc: 'Raised floors, 1.8kW/m² power density, dual fibre feeds, backup generation, and 24/7 security.'},
         {icon: 'transport', title: 'Access', desc: 'Monorail station at civic plaza, underground parking 1:200 m², and EV charging in every bay.'}
@@ -271,11 +284,16 @@ document.addEventListener('DOMContentLoaded', function() {
     leisure: {
       label: 'Leisure',
       title: 'Leisure & Recreation District',
-      sub: 'Marina promenade, parks, restaurants, and cultural venues — the city\'s social living room.',
+      sub: 'Lapis Lazuli Water Park, Meadow public park, and Pause Play — the city\'s social living room.',
       eyebrow: 'Leisure & Recreation District',
-      heading: 'The Waterfront Quarter',
-      lead: 'A car-light promenade linking marinas, parks, restaurants, cultural venues, and the city\'s public heart. Weekend markets, shoreline trails, and the community pulse.',
-      highlights: ['F&B pads from 120 m²', 'Marina slip ownership and lease options', 'Event and wellness operator partnerships', 'Kayak launch, shaded promenades, public Wi-Fi'],
+      heading: 'Lapis Lazuli, Meadow & Pause Play',
+      lead: 'Lapis Lazuli — an aquatic centre, aquarium, and water theme park — anchors the district and Business Town One\'s tourism case, projected at 150,000 annual visitors alongside the adjoining hotel. Meadow gives the district its public park and open green space. Pause Play brings indoor gaming and entertainment. A marina promenade, dining, and cultural venues complete the quarter.',
+      highlights: [
+        'Lapis Lazuli — aquatic centre, aquarium, water theme park',
+        'Meadow — public park and green space',
+        'Pause Play — indoor gaming and entertainment centre',
+        'Marina slip ownership and lease options'
+      ],
       infra: [
         {icon: 'utilities', title: 'Marine Infrastructure', desc: 'Marina with 60+ berths, jetties, slipway, kayak launch, and ferry connection to Port Harcourt.'},
         {icon: 'transport', title: 'Walkable Design', desc: 'Car-light core with shaded promenades, cycle hire, and direct monorail access to all districts.'}
@@ -285,16 +303,42 @@ document.addEventListener('DOMContentLoaded', function() {
     innovation: {
       label: 'Innovation',
       title: 'Innovation & Research District',
-      sub: 'Applied research, climate-tech incubation, and prototyping — the Delta Lab.',
+      sub: 'PS Ninety9 research institute and the 4 Rivers smart utility network — the Delta Lab.',
       eyebrow: 'Innovation & Research District',
-      heading: 'The Delta Lab',
-      lead: 'Applied research and light-tech ecosystem. Prototyping labs, incubator spaces, and demonstration sites for climate technology suited to the Niger Delta region.',
-      highlights: ['Lab suites from 400 m²', '3-phase power, high-bay labs (6m height)', 'Incubator equity partnership available', 'Loading bays, fibre redundancy'],
+      heading: 'PS Ninety9 & The Delta Lab',
+      lead: 'PS Ninety9, Business Town One\'s Research and Technical Institute, anchors an applied research and light-tech ecosystem — prototyping labs, incubator space, and demonstration sites for climate technology suited to the Niger Delta. The 4 Rivers network powers the district\'s grid, water, and waste systems.',
+      highlights: [
+        'PS Ninety9 — research and technical institute',
+        '4 Rivers — smart utility and grid infrastructure',
+        'Incubator equity partnership available',
+        'Loading bays, fibre redundancy'
+      ],
       infra: [
         {icon: 'utilities', title: 'Technical Infrastructure', desc: '3-phase power, high-bay labs with 6m clearance, loading bays, and dual fibre redundancy.'},
         {icon: 'transport', title: 'Connectivity', desc: 'Dedicated freight access, monorail link to commercial district, and campus-wide gigabit Wi-Fi.'}
       ],
       badge: 'Research & Tech'
+    },
+    civic: {
+      label: 'Civic',
+      title: 'Civic & Community District',
+      sub: 'The Table, Uchechukwu and Creation schools, Children\'s Bread, The Citadel, Stormless, and Help Stone — Business Town One\'s civic and municipal core.',
+      eyebrow: 'Civic & Community District',
+      heading: 'The Civic Core',
+      lead: 'Business Town One\'s civic infrastructure in one district. The Table serves as the medical centre. Uchechukwu Secondary School and Creation Primary School (a & b) anchor education. Children\'s Bread runs as the city clinic. The Citadel provides worship space; Stormless, a civic centre for community programming. Help Stone, the municipal service hub, coordinates operations across all of Business Town One.',
+      highlights: [
+        'The Table — medical centre',
+        'Uchechukwu Secondary School & Creation Primary School (a & b)',
+        'Children\'s Bread — city clinic',
+        'The Citadel — worship centre',
+        'Stormless — civic centre',
+        'Help Stone — municipal service hub'
+      ],
+      infra: [
+        {icon: 'utilities', title: 'Municipal Services', desc: 'Help Stone coordinates civic operations, waste, and community services across Business Town One.'},
+        {icon: 'transport', title: 'Access', desc: 'Monorail and BRT access connecting civic, health, education, and worship facilities to every district.'}
+      ],
+      badge: 'Civic & Community'
     },
     landmark: {
       label: 'Landmark',
@@ -302,8 +346,13 @@ document.addEventListener('DOMContentLoaded', function() {
       sub: 'Sanctus Tower at 325m+ and The Conservatory — the city\'s iconic core.',
       eyebrow: 'Landmark District',
       heading: 'Sanctus Tower & The Conservatory',
-      lead: 'The symbolic core of Sanctus Gardens City: a 325m+ landmark tower and an adjacent glasshouse conservatory anchored in restored mangroves. Observation, hospitality, and civic functions.',
-      highlights: ['Sanctus Tower: 325m+, 60+ levels', 'Observation deck and sky restaurant', 'The Conservatory — mangroves & events', 'Operator and licensing opportunities'],
+      lead: 'The symbolic core of Sanctus Gardens City. Sanctus Tower rises past 325 metres — an observation deck, sky restaurant, and civic functions at the summit. The Conservatory sits alongside it, a glasshouse anchored in restored mangroves. Together, they orient every view across Business Town One.',
+      highlights: [
+        'Sanctus Tower — 325m+, 60+ levels',
+        'Observation deck and sky restaurant',
+        'The Conservatory — mangroves and events',
+        'Operator and licensing opportunities'
+      ],
       infra: [
         {icon: 'utilities', title: 'Vertical Transport', desc: 'High-speed elevator bank, sky lobby transfers, and dedicated MEP risers for full-floor tenants.'},
         {icon: 'transport', title: 'Anchor Access', desc: 'Direct monorail station beneath tower, VIP drop-off, and service yard for event logistics.'}

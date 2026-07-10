@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interactive Masterplan — Sanctus Gardens City</title>
-<meta name="description" content="Explore the masterplan of Sanctus Gardens City. Interactive map of five districts across 115.91 hectares of waterfront smart city.">
+<meta name="description" content="Explore the masterplan of Sanctus Gardens City. Interactive map of six districts across 115.91 hectares of waterfront smart city.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -27,6 +27,7 @@
     <a href="district.html?id=leisure" class="mobile-nav__link">Leisure</a>
     <a href="district.html?id=innovation" class="mobile-nav__link">Innovation</a>
     <a href="district.html?id=landmark" class="mobile-nav__link">Landmark</a>
+    <a href="district.html?id=civic" class="mobile-nav__link">Civic &amp; Community</a>
   </div>
   <div class="mobile-nav__group">
     <h5>Opportunities</h5>
@@ -120,6 +121,7 @@
               <text x="910" y="470" fill="#fff" font-size="12" font-family="system-ui" font-weight="500" text-anchor="middle" opacity="0.8">Innovation</text>
               <text x="910" y="485" fill="rgba(255,255,255,0.5)" font-size="8" font-family="system-ui" text-anchor="middle">Delta Lab</text>
             </g>
+            <!-- civic district needs a masterplan polygon added — deferred, requires manual SVG work -->
             <!-- Landmark -->
             <g class="district" data-district="landmark" data-name="Landmark District" data-tag="Sanctus Tower">
               <path d="M360 220 L440 210 L460 360 L440 460 L340 440Z" fill="rgba(184,146,58,0.3)" stroke="rgba(220,192,122,0.5)" stroke-width="1.5"/>
@@ -177,6 +179,7 @@
           <div class="row"><span class="swatch" style="background:rgba(15,61,46,0.65);border:1px solid rgba(255,255,255,0.2)"></span>Leisure</div>
           <div class="row"><span class="swatch" style="background:rgba(31,106,79,0.6);border:1px solid rgba(255,255,255,0.2)"></span>Innovation</div>
           <div class="row"><span class="swatch" style="background:rgba(184,146,58,0.3);border:1px solid rgba(220,192,122,0.4)"></span>Landmark</div>
+          <div class="row"><span class="swatch" style="background:rgba(154,120,38,0.55);border:1px solid rgba(184,146,58,0.4)"></span>Civic &amp; Community</div>
         </div>
       </div>
     </div>
@@ -188,7 +191,7 @@
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">City Zones</span>
-      <h2>Five districts, distinct character</h2>
+      <h2>Six districts, distinct character</h2>
     </div>
     <div class="grid grid--2 reveal-stagger">
       <div class="pillar">
@@ -221,6 +224,12 @@
         <p>Sanctus Tower (325m+) and The Conservatory — the symbolic core of the city, set within restored mangroves.</p>
         <div class="mt-2"><a href="district.html?id=landmark" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
       </div>
+      <div class="pillar" style="grid-column:1/-1;max-width:600px">
+        <span class="kicker-num">06</span>
+        <h3 class="mt-1">Civic &amp; Community District</h3>
+        <p>The Table medical centre, Uchechukwu and Creation schools, and Stormless civic centre — Business Town One's civic core.</p>
+        <div class="mt-2"><a href="district.html?id=civic" class="text-link">Explore district <span class="btn-arrow">→</span></a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -240,6 +249,7 @@
           <option value="leisure">Leisure &amp; Recreation</option>
           <option value="innovation">Innovation &amp; Research</option>
           <option value="landmark">Landmark / Sanctus Tower</option>
+          <option value="civic">Civic &amp; Community</option>
         </select>
         <button type="submit" class="btn btn--gold btn--sm">Send Me Info</button>
         <div class="form-status" style="display:none;width:100%;font-size:0.85rem;color:var(--gold-300)"></div>
@@ -288,7 +298,6 @@
           <li><a href="opportunity.html">Opportunities</a></li>
           <li><a href="sustainability.html">Sustainability</a></li>
           <li><a href="partnerships.html">Partnerships</a></li>
-          <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">

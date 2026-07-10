@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_FILE\" | grep -qiE '\\.(png|jpg|jpeg|gif|pdf)$' && echo 'BLOCKED: Image and binary files should not be edited via Claude' && exit 1 || exit 0",
+            "timeout": 3,
+            "statusMessage": "Blocking binary file edits"
+          }
+        ]
+      }
+    ]
+  }
+}

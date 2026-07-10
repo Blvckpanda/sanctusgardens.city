@@ -24,7 +24,6 @@ A premium static site for Africa's next visionary mega-development. 12 pages, ze
 | `about-heri.html` | Company profile & leadership |
 | `contact.html` | Lead capture form |
 | `sustainability.html` | Sustainability KPIs |
-| `faq.html` | Accordion FAQ |
 | `partnerships.html` | Partnership opportunities |
 | `thank-you.html` | Post-submission confirmation |
 
