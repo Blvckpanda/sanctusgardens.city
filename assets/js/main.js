@@ -19,6 +19,7 @@ function initHeroParticles(canvas) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let w, h, particles = [], rafId = null;
+  let mouseX = null, mouseY = null;
   const MAX = 80;
 
   function resize() {
@@ -26,18 +27,33 @@ function initHeroParticles(canvas) {
     h = canvas.height = canvas.parentElement.offsetHeight;
   }
 
+  function onMouse(e) { mouseX = e.clientX; mouseY = e.clientY; }
+  function onMouseLeave() { mouseX = mouseY = null; }
+
   class Particle {
     constructor() { this.reset(); }
     reset() {
       this.x = Math.random() * w;
       this.y = Math.random() * h;
-      this.r = 0.8 + Math.random() * 2.2;
-      this.dx = (Math.random() - 0.5) * 0.3;
-      this.dy = -0.1 - Math.random() * 0.2;
+      this.r = 0.8 + Math.random() * 2.6;
+      this.dx = (Math.random() - 0.5) * 0.35;
+      this.dy = -0.1 - Math.random() * 0.25;
       this.alpha = 0.15 + Math.random() * 0.35;
-      this.hue = Math.random() > 0.7 ? 1 : 0; // gold if hue=1
+      this.hue = Math.random() > 0.6 ? 1 : 0; // ~40% gold
+      this.bright = Math.random() > 0.85; // occasional bright accent
     }
     update() {
+      // Gentle cursor repulsion
+      if (mouseX !== null && mouseY !== null) {
+        const dx = this.x - mouseX;
+        const dy = this.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130 && dist > 0) {
+          const force = (130 - dist) / 130 * 0.9;
+          this.x += (dx / dist) * force;
+          this.y += (dy / dist) * force;
+        }
+      }
       this.x += this.dx;
       this.y += this.dy;
       if (this.y < -10 || this.x < -10 || this.x > w + 10) this.reset();
@@ -45,7 +61,9 @@ function initHeroParticles(canvas) {
     }
     draw() {
       if (this.hue) {
-        ctx.fillStyle = `rgba(220, 192, 122, ${this.alpha})`;
+        ctx.fillStyle = this.bright
+          ? `rgba(255, 230, 170, ${this.alpha * 1.3})`
+          : `rgba(220, 192, 122, ${this.alpha})`;
       } else {
         ctx.fillStyle = `rgba(200, 220, 210, ${this.alpha * 0.8})`;
       }
@@ -91,6 +109,9 @@ function initHeroParticles(canvas) {
     if (document.hidden) { cancelAnimationFrame(rafId); }
     else { draw(); }
   });
+
+  canvas.addEventListener('mousemove', onMouse);
+  canvas.addEventListener('mouseleave', onMouseLeave);
 
   init();
   draw();
@@ -264,6 +285,14 @@ window.SGC_DISTRICTS = {
     tags: ['Labs', 'Incubator', 'Climate-Tech', 'Training'],
     opps: ['Lab suites (400-1,500 m²)', 'Incubator equity partnership', 'Corporate innovation floors']
   },
+  civic: {
+    tag: 'Civic & Community District',
+    title: 'Business Town One Civic Core',
+    desc: 'The Table medical centre, Uchechukwu Secondary School, Creation Primary School (a & b), Children\'s Bread city clinic, The Citadel, Stormless civic centre, and Help Stone municipal hub.',
+    infra: 'Help Stone coordinates civic operations, waste management, and community services across BT-1.',
+    tags: ['Education', 'Healthcare', 'Civic Centre', 'Municipal'],
+    opps: ['Municipal service partnership', 'Education operator RFP', 'Healthcare facility management']
+  },
   landmark: {
     tag: 'Landmark District',
     title: 'Sanctus Tower & The Conservatory',
@@ -290,29 +319,7 @@ if (poll) {
 }
 
 /* ---------- Contact form: pre-select category from URL ---------- */
-(function prefillContactForm() {
-  const params = new URLSearchParams(window.location.search);
-  const interest = params.get('interest');
-  if (!interest || !window.location.pathname.endsWith('contact.html')) return;
-
-  const select = document.getElementById('contact-category');
-  if (select) {
-    select.value = interest;
-    // Also pre-fill the message with context
-    const msg = document.getElementById('contact-msg');
-    if (msg && !msg.value) {
-      const districtNames = {
-        residential: 'Residential District (Waterfront Estates)',
-        commercial: 'Commercial & Business District',
-        leisure: 'Leisure & Recreation District (Marina & Culture)',
-        innovation: 'Innovation & Research District (Delta Lab)',
-        landmark: 'Landmark District (Sanctus Tower)'
-      };
-      const name = districtNames[interest] || interest;
-      msg.value = `I'm interested in the ${name} and would like to receive tailored investment information.`;
-    }
-  }
-})();
+// (consolidated in prefillContactForm below)
 
 /* ---------- Drawer ---------- */
 const drawer = document.querySelector('.drawer');
@@ -367,7 +374,7 @@ document.querySelectorAll('.panorama').forEach(pano => {
     const max = scene.offsetWidth - pano.clientWidth;
     pos = Math.max(-max/2, Math.min(max/2, pos));
     scene.style.transform = `translateX(${pos}px)`;
-    if (progress) progress.style.width = `${50 + (pos / Math.max(max/2,1)) * 50}%`;
+    if (progress) progress.style.transform = `scaleX(${0.5 + (pos / Math.max(max/2,1)) * 0.5})`;
   });
   pano.addEventListener('pointerup', e => {
     dragging = false;
@@ -411,11 +418,14 @@ document.querySelectorAll('.acc').forEach(acc => {
   });
 });
 
-/* ---------- District page loader ---------- */
+/* ---------- District page loader (fallback — inline data takes priority) ---------- */
 (function loadDistrict() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   if (!id || !window.location.pathname.endsWith('district.html')) return;
+
+  // Skip if the page has its own inline data (detected by the new badge element)
+  if (document.getElementById('district-badge-display')) return;
 
   const d = window.SGC_DISTRICTS[id];
   if (!d) return;
@@ -468,7 +478,17 @@ function prefillContactForm() {
     commercial: 'commercial',
     leisure: 'leisure',
     innovation: 'innovation',
-    landmark: 'landmark'
+    landmark: 'landmark',
+    civic: 'civic'
+  };
+
+  const districtNames = {
+    residential: 'Residential District (Waterfront Estates)',
+    commercial: 'Commercial & Business District',
+    leisure: 'Leisure & Recreation District (Marina & Culture)',
+    innovation: 'Innovation & Research District (Delta Lab)',
+    landmark: 'Landmark District (Sanctus Tower)',
+    civic: 'Civic & Community District'
   };
 
   const value = districtMap[interest] || category;
@@ -476,10 +496,10 @@ function prefillContactForm() {
   if (option) {
     select.value = value;
     // Also prefill a message hint if it's from a district interest
-    if (interest && districtMap[interest]) {
+    if (interest && districtNames[interest]) {
       const msg = document.getElementById('contact-msg');
       if (msg && !msg.value) {
-        msg.value = `I'm interested in the ${interest.charAt(0).toUpperCase() + interest.slice(1)} District investment opportunities.`;
+        msg.value = `I'm interested in the ${districtNames[interest]} and would like to receive tailored investment information.`;
       }
     }
   }
